@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vrijheid en Vooruitgang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F9F9F9; /* Lichtgrijze achtergrond */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Navigatiebalk stijl */
+        .navbar {
+            background-color: #88B7AC;
+            overflow: hidden;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 0; /* Geen padding om logo aan te passen */
+            position: relative;
+        }
+
+        .navbar a, .navbar button {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            border: 2px solid transparent; /* Transparante rand */
+            border-radius: 5px;
+            margin: 0 5px;
+            transition: background-color 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .navbar a:hover, .navbar button:hover {
+            background-color: #88B7AC;
+            border-color: white; /* Witte rand bij hover */
+        }
+
+        .navbar button {
+            background-color: transparent;
+            border: none;
+        }
+
+        /* Titel stijlen */
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #88B7AC;
+            margin: 40px 0;
+        }
+
+        /* Inleiding stijlen */
+        .intro {
+            font-size: 20px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            line-height: 1.6;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Kernpunten sectie stijl */
+        .kernpunten {
+            font-size: 18px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: #e2f8f3;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .kernpunten h2 {
+            font-size: 32px;
+            color: #88B7AC;
+        }
+
+        .kernpunten ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .kernpunten ul li {
+            font-size: 18px;
+            padding: 10px 0;
+        }
+
+        /* Stijl voor de stemknop */
+        .stem-knop {
+            background-color: #88B7AC;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: background-color 0.3s;
+        }
+
+        .stem-knop:hover {
+            background-color: #88B7AC;
+        }
+
+        /* Stijl voor de groepsfoto */
+        .group-photo img {
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Partijleden sectie stijl */
+        .partijleden {
+            font-size: 18px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .partijleden h2 {
+            font-size: 32px;
+            color: #88B7AC;
+        }
+
+        .partijlid {
+            margin: 20px 0;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .partijlid h3 {
+            font-size: 24px;
+            color: #88B7AC;
+        }
+
+        .partijlid p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        /* Footer stijl */
+        .footer {
+            margin-top: 20px;
+            font-size: 16px;
+            background-color: #88B7AC;
+            color: white;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Smooth scroll effect */
+        html {
+            scroll-behavior: smooth; /* Smooth scroll effect */
+        }
+    </style>
+    <script>
+        // Functie voor het tonen van de melding
+        function stemMelding() {
+            const message = document.getElementById("stemMelding").innerText;
+            alert(message);
+        }
+
+        // Functie voor het wisselen van taal
+        function switchLanguage(language) {
+            // Vertaal navigatie
+            var navItems = document.querySelectorAll('.navbar a');
+            navItems.forEach(function(item) {
+                item.textContent = item.getAttribute('data-' + language);
+            });
+
+            // Vertaal de inhoud van de pagina
+            var contentItems = document.querySelectorAll('[data-' + language + ']');
+            contentItems.forEach(function(item) {
+                item.innerHTML = item.getAttribute('data-' + language);
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- Navigatiebalk -->
+    <div class="navbar">
+        <a href="#intro" data-nl="Inleiding" data-en="Introduction" data-fr="Introduction">Inleiding</a>
+        <a href="#partijleden" data-nl="Onze Partijleden" data-en="Our Members" data-fr="Nos Membres">Onze Partijleden</a>
+        <a href="#kernpunten" data-nl="Onze Kernpunten" data-en="Our Key Points" data-fr="Nos Points Clés">Onze Kernpunten</a>
+        <a href="#contact" data-nl="Contact" data-en="Contact" data-fr="Contact">Contact</a>
+
+        <!-- Taalwisselknoppen -->
+        <button onclick="switchLanguage('nl')">NL</button>
+        <button onclick="switchLanguage('fr')">FR</button>
+        <button onclick="switchLanguage('en')">EN</button>
+    </div>
+
+    <div id="content">
+        <!-- Titel -->
+        <h1 data-nl="Vrijheid en Vooruitgang" data-en="Freedom and Progress" data-fr="Liberté et Progrès">
+            Vrijheid en Vooruitgang
+        </h1>
+
+        <!-- Inleiding -->
+        <div id="intro" class="intro">
+            <p data-nl="Welkom bij de officiële website van Vrijheid en Vooruitgang! Wij zijn een politieke partij die zich inzet voor een betere toekomst door vrijheid en vooruitgang te waarborgen voor iedereen."
+               data-en="Welcome to the official website of Freedom and Progress! We are a political party committed to a better future by ensuring freedom and progress for everyone."
+               data-fr="Bienvenue sur le site officiel de Liberté et Progrès! Nous sommes un parti politique qui s'engage pour un avenir meilleur en garantissant la liberté et le progrès pour tous.">
+               Welkom bij de officiële website van Vrijheid en Vooruitgang! Wij zijn een politieke partij die zich inzet voor een betere toekomst door vrijheid en vooruitgang te waarborgen voor iedereen.
+            </p>
+        </div>
+
+        <!-- Groepsfoto -->
+        <h2 id="partijleden" data-nl="Onze Partijleden" data-en="Our Members" data-fr="Nos Membres">Onze Partijleden</h2>
+        <div class="group-photo">
+            <img src="Afbeelding van WhatsApp op 2024-10-02 om 20.18.19_70cf1096.jpg" alt="Groepsfoto van de partijleden">
+        </div>
+
+        <!-- Partijleden -->
+        <div class="partijleden">
+            <div class="partijlid">
+                <h3 data-nl="Rune Sas - Lijsttrekker (1)" data-en="Rune Sas - List Leader (1)" data-fr="Rune Sas - Tête de liste (1)">Rune Sas - Lijsttrekker (1)</h3>
+                <p data-nl="Leeftijd: 18" data-en="Age: 18" data-fr="Âge: 18">Leeftijd: 18</p>
+                <p data-nl="Talenkennis: Nederlands, basis Frans en Engels" data-en="Language Skills: Dutch, basic French and English" data-fr="Langues: Néerlandais, Français de base et Anglais">Talenkennis: Nederlands, basis Frans en Engels</p>
+                <p data-nl="Verkeersveiligheid - Molenstraat, Jeugd en ontspanning" data-en="Road Safety - Molenstraat, Youth and Recreation" data-fr="Sécurité routière - Molenstraat, Jeunesse et détente">Verkeersveiligheid - Molenstraat, Jeugd en ontspanning</p>
+            </div>
+            <div class="partijlid">
+                <h3 data-nl="Hannelore Persoons (2)" data-en="Hannelore Persoons (2)" data-fr="Hannelore Persoons (2)">Hannelore Persoons (2)</h3>
+                <p data-nl="Leeftijd: 18" data-en="Age: 18" data-fr="Âge: 18">Leeftijd: 18</p>
+                <p data-nl="Talenkennis: Nederlands, basis Frans en Engels" data-en="Language Skills: Dutch, basic French and English" data-fr="Langues: Néerlandais, Français de base et Anglais">Talenkennis: Nederlands, basis Frans en Engels</p>
+                <p data-nl="Veiligheid op straat, Verbeteren van fabriekswegen" data-en="Street Safety, Improving Factory Roads" data-fr="Sécurité dans la rue, Amélioration des routes des usines">Veiligheid op straat, Verbeteren van fabriekswegen</p>
+            </div>
+            <div class="partijlid">
+                <h3 data-nl="Laura Otto (3)" data-en="Laura Otto (3)" data-fr="Laura Otto (3)">Laura Otto (3)</h3>
+                <p data-nl="Leeftijd: 17" data-en="Age: 17" data-fr="Âge: 17">Leeftijd: 17</p>
+                <p data-nl="Talenkennis: Nederlands, Frans en Engels" data-en="Language Skills: Dutch, French and English" data-fr="Langues: Néerlandais, Français et Anglais">Talenkennis: Nederlands, Frans en Engels</p>
+                <p data-nl="Betere mobiliteit voor scholieren, Voorrang voor fietsers op rotondes" data-en="Better Mobility for Students, Priority for Cyclists at Roundabouts" data-fr="Meilleure mobilité pour les élèves, Priorité aux cyclistes au rond-point">Betere mobiliteit voor scholieren, Voorrang voor fietsers op rotondes</p>
+            </div>
+            <div class="partijlid">
+                <h3 data-nl="Carmen Lee (4)" data-en="Carmen Lee (4)" data-fr="Carmen Lee (4)">Carmen Lee (4)</h3>
+                <p data-nl="Leeftijd: 17" data-en="Age: 17" data-fr="Âge: 17">Leeftijd: 17</p>
+                <p data-nl="Talenkennis: Nederlands, basis Frans en Engels" data-en="Language Skills: Dutch, basic French and English" data-fr="Langues: Néerlandais, Français de base et Anglais">Talenkennis: Nederlands, basis Frans en Engels</p>
+                <p data-nl="Zorg voor ouderen, Integratie en betrokkenheid" data-en="Elderly Care, Integration and Involvement" data-fr="Soins aux personnes âgées, Intégration et engagement">Zorg voor ouderen, Integratie en betrokkenheid</p>
+            </div>
+            <div class="partijlid">
+                <h3 data-nl="Jarne Schepkens - Lijstduwer (5)" data-en="Jarne Schepkens - List Follower (5)" data-fr="Jarne Schepkens - Dernier de liste (5)">Jarne Schepkens - Lijstduwer (5)</h3>
+                <p data-nl="Leeftijd: 17" data-en="Age: 17" data-fr="Âge: 17">Leeftijd: 17</p>
+                <p data-nl="Talenkennis: Nederlands, basis Frans en Engels" data-en="Language Skills: Dutch, basic French and English" data-fr="Langues: Néerlandais, Français de base et Anglais">Talenkennis: Nederlands, basis Frans en Engels</p>
+                <p data-nl="Milieu en duurzaamheid, Fietsinfrastructuur" data-en="Environment and Sustainability, Cycling Infrastructure" data-fr="Environnement et durabilité, Infrastructure cyclable">Milieu en duurzaamheid, Fietsinfrastructuur</p>
+            </div>
+        </div>
+
+        <!-- Kernpunten -->
+        <div id="kernpunten" class="kernpunten">
+            <h2 data-nl="Onze Kernpunten" data-en="Our Key Points" data-fr="Nos Points Clés">Onze Kernpunten</h2>
+            <h3 data-nl="Afvalbeheer" data-en="Waste Management" data-fr="Gestion des déchets">Afvalbeheer</h3>
+            <ul>
+                <li data-nl="Correct afval sorteren stimuleren" data-en="Encouraging proper waste sorting" data-fr="Encourager le tri des déchets">Correct afval sorteren stimuleren</li>
+                <li data-nl="Snelle en zichtbare handhaving op sluikstorten" data-en="Fast and visible enforcement against illegal dumping" data-fr="Application rapide et visible des règles contre les dépôts sauvages">Snelle en zichtbare handhaving op sluikstorten</li>
+                <li data-nl="Gebruik van herbruikbare bekers stimuleren" data-en="Encouraging the use of reusable cups" data-fr="Encourager l'utilisation de gobelets réutilisables">Gebruik van herbruikbare bekers stimuleren</li>
+            </ul>
+            <h3 data-nl="Veiligheid op straat" data-en="Street Safety" data-fr="Sécurité dans la rue">Veiligheid op straat</h3>
+            <ul>
+                <li data-nl="Voldoende en kwalitatieve straatverlichting voor voetgangers en verkeer" data-en="Sufficient and quality street lighting for pedestrians and traffic" data-fr="
+                Éclairage public suffisant et de haute qualité pour les piétons et la circulation">Voldoende en kwalitatieve straatverlichting voor voetgangers en verkeer</li>
+            </ul>
+            <h3 data-nl="Verbetering van wegen bij fabrieken" data-en="Improvement of Roads near Factories" data-fr="Amélioration des routes à proximité des usines">Verbetering van wegen bij fabrieken</h3>
+            <ul>
+                <li data-nl="Bredere en stevigere banen voor verhoogde veiligheid en logistieke efficiëntie" data-en="Wider and sturdier roads for increased safety and logistical efficiency" data-fr="
+                Des voies plus larges et plus robustes pour une sécurité">Bredere en stevigere banen voor verhoogde veiligheid en logistieke efficiëntie</li>
+                <li data-nl="Verbeterde fabriekswegen voor duurzaamheid en lagere onderhoudskosten" data-en="Improved factory roads for sustainability and lower maintenance costs" data-fr="et une efficacité logistique accrues">Verbeterde fabriekswegen voor duurzaamheid en lagere onderhoudskosten</li>
+            </ul>
+            <h3 data-nl="Verkeersveiligheid: Molenstraat" data-en="Traffic Safety: Molenstraat" data-fr="Sécurité routière: Molenstraat">Verkeersveiligheid: Molenstraat</h3>
+            <ul>
+                <li data-nl="Molenstraat als voorrangsweg om gevaarlijke situaties te verminderen" data-en="Molenstraat as a priority road to reduce dangerous situations" data-fr="
+                La Molenstraat comme route prioritaire pour réduire les situations dangereuses">Molenstraat als voorrangsweg om gevaarlijke situaties te verminderen</li>
+            </ul>
+            <h3 data-nl="Integratie en betrokkenheid" data-en="Integration and Involvement" data-fr="Intégration et engagement">Integratie en betrokkenheid</h3>
+            <ul>
+                <li data-nl="Immigratiedienst die vrijwilligers inschakelt voor ondersteuning van nieuwkomers" data-en="Immigration service that enlists volunteers to support newcomers" data-fr="
+                Service d'immigration qui fait appel à des bénévoles pour soutenir les nouveaux arrivants">Immigratiedienst die vrijwilligers inschakelt voor ondersteuning van nieuwkomers</li>
+            </ul>
+            <h3 data-nl="Zorg voor ouderen" data-en="Elderly Care" data-fr="Soins aux personnes âgées">Zorg voor ouderen</h3>
+            <ul>
+                <li data-nl="Uitbreiden van het thuiszorgnetwerk en seniorenactiviteiten om isolatie te voorkomen" data-en="Expanding the home care network and activities for seniors to prevent isolation" data-fr="
+                Élargir le réseau de soins à domicile et les activités pour les aînés pour prévenir l'isolement">Uitbreiden van het thuiszorgnetwerk en seniorenactiviteiten om isolatie te voorkomen</li>
+            </ul>
+            <h3 data-nl="Jeugd en ontspanning" data-en="Youth and Recreation" data-fr="Jeunesse et détente">Jeugd en ontspanning</h3>
+            <ul>
+                <li data-nl="Herinrichten van het jeugdhuis en promotie van diverse activiteiten" data-en="Redesigning the youth center and promoting various activities" data-fr="
+                Réaménagement de la maison des jeunes et promotion de diverses activités">Herinrichten van het jeugdhuis en promotie van diverse activiteiten</li>
+            </ul>
+            <h3 data-nl="Betere mobiliteit voor scholieren" data-en="Better Mobility for Students" data-fr="Meilleure mobilité pour les élèves">Betere mobiliteit voor scholieren</h3>
+            <ul>
+                <li data-nl="Efficiëntere buslijnen voor snellere en veiligere schoolroutes" data-en="More efficient bus lines for faster and safer school routes" data-fr="
+                Des lignes de bus plus efficaces pour des itinéraires scolaires plus rapides et plus sûrs">Efficiëntere buslijnen voor snellere en veiligere schoolroutes</li>
+            </ul>
+            <h3 data-nl="Fietsinfrastructuur" data-en="Cycling Infrastructure" data-fr="Infrastructure cyclable">Fietsinfrastructuur</h3>
+            <ul>
+                <li data-nl="Fietspad van Genendijk naar Juffertje in 't groen aanleggen" data-en="Creating a bike path from Genendijk to Juffertje in 't groen" data-fr="
+                Créer une rue cyclable de Genendijk à Juffertje in 't groen">Fietspad van Genendijk naar Juffertje in 't groen aanleggen</li>
+                <li data-nl="Fietspad Tessenderlo-Engsbergen aanleggen" data-en="Creating a Tessenderlo-Engsbergen bike path" data-fr="
+                Construction de la piste cyclable Tessenderlo-Engsbergen">Fietspad Tessenderlo-Engsbergen aanleggen</li>
+                <li data-nl="Fietspaden beter onderhouden" data-en="Better maintenance of bike paths" data-fr="
+                Des pistes cyclables mieux entretenues">Fietspaden beter onderhouden</li>
+            </ul>
+            <h3 data-nl="Voorrang voor fietsers op rotondes" data-en="Priority for Cyclists at Roundabouts" data-fr="Priorité aux cyclistes aux ronds-points">Voorrang voor fietsers op rotondes</h3>
+            <ul>
+                <li data-nl="Fietsers voorrang geven op rotondes om de verkeersveiligheid te vergroten" data-en="Giving cyclists priority at roundabouts to enhance traffic safety">Fietsers voorrang geven op rotondes om de verkeersveiligheid te vergroten</li>
+            </ul>
+        </div>
+        <html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoe realiseren we dit?</title>
+    <style>
+        /* Algemene styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f8fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            color: #222;
+        }
+
+        /* Box styling */
+        .box {
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            background-color: #e0e0e0;
+            color: #222;
+        }
+
+        .donations {
+            background-color: #f28b82;
+        }
+
+        .businesses {
+            background-color: #fbbc04;
+        }
+
+        .events {
+            background-color: #fff475;
+        }
+
+        .speed-cameras {
+            background-color: #ccff90;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        ul li {
+            margin-left: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Language switcher styling */
+        .language-switch {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .language-switch button {
+            margin: 0 8px;
+            padding: 8px 16px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-switch button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .title {
+                font-size: 1.5em;
+            }
+
+            .language-switch button {
+                font-size: 0.9em;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Switcher -->
+    <div class="language-switch">
+        <button onclick="switchLanguage('nl')">Nederlands</button>
+        <button onclick="switchLanguage('fr')">Français</button>
+        <button onclick="switchLanguage('en')">English</button>
+    </div>
+
+    <!-- Content Container -->
+    <div class="container">
+
+        <!-- Title -->
+        <h2 class="title" data-nl="Hoe realiseren we dit?" data-fr="Comment y parvenons-nous ?" data-en="How do we achieve this?">
+            Hoe realiseren we dit?
+        </h2>
+
+        <!-- Small donations from citizens -->
+        <div class="box donations">
+            <h3 data-nl="Kleine donaties van burgers" data-fr="Petits dons des citoyens" data-en="Small donations from citizens">
+                Kleine donaties van burgers
+            </h3>
+            <ul>
+                <li data-nl="Crowdfunding" data-fr="Crowdfunding" data-en="Crowdfunding">Crowdfunding</li>
+            </ul>
+        </div>
+
+        <!-- Partnerships with local businesses -->
+        <div class="box businesses">
+            <h3 data-nl="Samenwerkingen met lokale ondernemers" data-fr="Partenariats avec des entreprises locales" data-en="Partnerships with local businesses">
+                Samenwerkingen met lokale ondernemers
+            </h3>
+            <ul>
+                <li data-nl="Sponsoring" data-fr="Sponsoring" data-en="Sponsorship">Sponsoring</li>
+                <li data-nl="Donaties in natura" data-fr="Dons en nature" data-en="Donations in kind">Donaties in natura</li>
+            </ul>
+        </div>
+
+        <!-- Fundraising events -->
+        <div class="box events">
+            <h3 data-nl="Fondsenwervende evenementen" data-fr="Événements de collecte de fonds" data-en="Fundraising events">
+                Fondsenwervende evenementen
+            </h3>
+            <ul>
+                <li data-nl="Donateursdiners" data-fr="Dîners de donateurs" data-en="Donor dinners">Donateursdiners</li>
+                <li data-nl="Benefietavonden" data-fr="Soirées caritatives" data-en="Benefit evenings">Benefietavonden</li>
+            </ul>
+        </div>
+
+        <!-- Speed cameras in school zones -->
+        <div class="box speed-cameras">
+            <h3 data-nl="Flitsers in schoolbuurten plaatsen" data-fr="Installation de radars dans les zones scolaires" data-en="Installing speed cameras in school zones">
+                Flitsers in schoolbuurten plaatsen
+            </h3>
+            <ul>
+                <li data-nl="Zorgt voor verkeersveiligheid" data-fr="Améliore la sécurité routière" data-en="Improves traffic safety">Zorgt voor verkeersveiligheid</li>
+                <li data-nl="Extra inkomsten" data-fr="Revenus supplémentaires" data-en="Generates additional income">Extra inkomsten</li>
+            </ul>
+        </div>
+
+    </div>
+    
+        <!-- Stemknop -->
+        <button class="stem-knop" id="stemKnop" data-nl="Stem" data-en="Vote" data-fr="Voter" onclick="stemMelding()">
+            Stem
+        </button>
+
+        <!-- Stem melding -->
+        <div id="stemMelding" data-nl="Stem via het verkiezingsblad van meneer Huybrechts!" data-en="Vote via Mr. Huybrechts' election sheet!" data-fr="Votez via la feuille d'élection de M. Huybrechts">Stem via het verkiezingsblad van meneer Huybrechts!</div>
+<!-- Sectie om de PowerPoint-download link weer te geven -->
+<div class="download-section">
+    <h2 data-nl="Download onze PowerPoint" data-en="Download our PowerPoint" data-fr="Téléchargez notre PowerPoint">
+        Download onze PowerPoint
+    </h2>
+    <p data-nl="Klik op de onderstaande link om de PowerPoint-presentatie te bekijken of te downloaden." 
+       data-en="Click the link below to view or download the PowerPoint presentation." 
+       data-fr="Cliquez sur le lien ci-dessous pour voir ou télécharger la présentation PowerPoint.">
+        Klik op de onderstaande link om de PowerPoint-presentatie te bekijken of te downloaden.
+    </p>
+    <!-- PowerPoint koppeling -->
+    <a href="https://leotes-my.sharepoint.com/:p:/r/personal/hannelore_persoons_student_campusmax_be/Documents/(V%C2%B2).pptx?d=wb74422879bb2428e851b0c6befc38e94&csf=1&web=1&e=I13rdT" 
+       target="_blank" 
+       data-nl="Download PowerPoint" 
+       data-en="Download PowerPoint" 
+       data-fr="Télécharger PowerPoint">
+       Download PowerPoint
+    </a>
+</div>
+
+        <!-- Contact informatie -->
+        <div id="contact" class="footer">
+            <h2 data-nl="Contact" data-en="Contact" data-fr="Contact">Contact</h2>
+            <p data-nl="Neem contact met ons op via e-mail: " data-en="Contact us via email: " data-fr="Contactez-nous par e-mail: ">Neem contact met ons op via e-mail: </p>
+            <p>
+                <a href="mailto:vrijheidenvooruitgang.info@gmail.com" style="color: white;">vrijheidenvooruitgang.info@gmail.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
